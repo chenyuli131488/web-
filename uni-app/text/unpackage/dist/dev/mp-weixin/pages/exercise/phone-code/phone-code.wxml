@@ -1,0 +1,1 @@
+<view class="uni-countdown"><view class="uni-countdown-numbers" style="{{'border-color:'+(borderColor)+';'+('color:'+(fontColor)+';')+('background:'+(bgrColor)+';')}}" id="{{id}}" data-event-opts="{{[['tap',[['click',['$event']]]]]}}" bindtap="__e">{{text+" "+s}}</view></view>

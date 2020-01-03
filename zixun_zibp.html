@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>资讯</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<script src="../js/rem.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="../css/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="zixun.css"/>
+<style type="text/css">	
+.mui-pull-bottom-tips {
+	text-align: center;
+	background-color: #efeff4;
+	font-size: 15px;
+	line-height: 40px;
+	color: #777;
+}			
+	
+
+	</style>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav" id="#header" style="background: #ab2b2a;">
+    <img src="../image/zixun-img/jundao.png"/>
+	<div id="header-qiehuan">
+		<div class="zix act"><a href="#zixun">资讯</a></div>
+		<div class="ship" id="ship"><a href="#shiping">视频</a></div>
+	</div>
+	<span class="mui-icon mui-icon-bars" id="mfb"></span>
+	
+</header>
+<!--选择栏-->
+		<ul class="mui-table-view" id="mfblist">
+	        <li class="mui-table-view-cell" id="chaye">
+	            	茶叶
+	        </li>
+	        <li class="mui-table-view-cell" id="hongj">
+	           		 红酒
+	        </li>
+	        <li class="mui-table-view-cell" id="zibp">
+	           		 滋补品
+	        </li>
+		</ul>
+			<!--资讯推荐-->									
+	<div id="pullrefresh" class="mui-content mui-scroll-wrapper" >
+		
+		<div class="mui-scroll">
+			<!--资讯滋补品盒子-->
+			<ul class="mui-table-view" id="zxt4">	        
+			</ul>							
+		</div>
+	</div>
+		</div>
+ 	<!--底部导航-->	 
+<nav id="footer_nav" class="mui-bar mui-bar-tab flex">
+	<a class="mui-tab-item" >
+		<span class="footer_nav_icon"><img src="../image/store-img/icon/1-2.png" alt="" /></span>
+		<span class="footer_nav_font" style="color:#ab2b2a;">首页</span>
+	</a>
+	<a class="jump" data-href="../mall/store_first_page.html">
+		<span class="footer_nav_icon"><img src="../image/store-img/icon/2-1.png" alt="" /></span>
+		<span class="footer_nav_font">商城</span>
+	</a>
+	<a  class="jump" data-href="../mall/main_active.html">
+		<span class="footer_nav_icon"><img src="../image/store-img/icon/hd-3.png" alt="" /></span>
+		<span class="footer_nav_font">活动</span>
+	</a>
+	<a id="myor">
+		<span class="footer_nav_icon"><img src="../image/store-img/icon/4-1.png" alt="" /></span>
+		<span class="footer_nav_font">我的</span>
+	</a>
+</nav>
+		
+<script src="../js/mui.min.js"></script>
+<script src="../js/store/com.js"></script>
+<script src="zixun.js"></script>
+<script>
+mui.init({
+	pullRefresh: {
+		container: '#pullrefresh',		
+		up: {
+			contentrefresh : "正在加载中...",
+			callback: zxzbp
+		}
+	}
+});	
+ //	资讯滋补品	
+    var zxzibup=1
+	function zxzbp(){
+		var url='https://api.jundao24.com/webapi/api/app/Article/GetArticles?page='+zxzibup+'&pagesize=10&channelid=1&categoryid=3';
+		zxzibup++;
+		mui.ajax(
+			url,
+			{
+				dataType:'json',//数据格式类型
+	            type:'get',//http请求类型
+	            headers:{'Content-Type':'application/json;charset=UTF-8'},	           
+				success:function(data){	
+					setTimeout(function(){
+							var c=data;
+							for(var i=0;i<c.length;i++){
+						var	html='<div class="chaye-box">';
+						if(c[i].click=="1"){
+							html+=' <a  class="details_a" data-href="zixundetail.html?id='+c[i].id+' ">';							
+						}else{
+							html+=' <a  class="details_a" data-href="zixuntuwen.html?id='+c[i].id+' ">';
+						}
+						if(c[i].imgurl == ""){
+							html+='<img src="http://jundao24.oss-cn-shanghai.aliyuncs.com/article/video-img_01.jpg" class="chayebox-img mui-pull-left"/>';
+						}else{
+							html+='<img src="'+c[i].imgurl+'" class="chayebox-img mui-pull-left"/>';
+						}
+						html+='<div class="chayebox-jies mui-pull-left">';
+						html+='<p class="chayebox-jies-p1">'+c[i].title+'</p>';
+						html+='<p class="mui-pull-left chayebox-jies-p2">补品&nbsp;|&nbsp;' + c[i].author+'</p>';
+						html+='</div>';
+						html+='</a>';
+						html+='</div>';	
+						var li = document.createElement('li');
+						li.innerHTML = html;						
+						document.getElementById("zxt4").appendChild(li);	
+					}
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh(c.length<10);
+						},100)	
+					
+				},
+				error:function(error){
+					console.log(error);
+				}
+			}
+		)
+	}
+	zxzbp();	
+function load(a,b){
+	document.getElementById(a).addEventListener('tap',function(){
+		mui.openWindow({
+			url: b, 
+			styles:{
+			top:0,//新页面顶部位置
+			bottom:0,//新页面底部位置
+			width:"100%",//新页面宽度，默认为100%
+			height:"100%",//新页面高度，默认为100%
+			},
+			extras:{
+			//自定义扩展参数，可以用来处理页面间传值
+			},
+			show:{
+				autoShow:true,//页面loaded事件发生后自动显示，默认为true
+				aniShow:'slide-in-right',//页面显示动画，默认为”slide-in-right“；
+				duration:'200'//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+			},
+			waiting:{
+				autoShow:true//自动显示等待框，默认为true
+			}
+		})
+	})
+}
+load('chaye','zixun_chaye.html');
+load('hongj','zixun_hongj.html');
+load('zibp','zixun_zibp.html');
+load('ship','ship_tuij.html');
+load('myor','../person/person_center.html');
+document.getElementById('mfb').addEventListener('tap',function(e){
+	e.stopPropagation();
+	document.getElementById('mfblist').style.display="block";
+})
+window.onscroll=function(){
+	document.getElementById('mfblist').style.display="none";
+}
+window.addEventListener('tap',function(){
+	document.getElementById('mfblist').style.display="none";
+})
+</script>
+</body>
+</html>

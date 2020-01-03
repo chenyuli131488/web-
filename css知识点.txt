@@ -1,0 +1,24 @@
+1、css选择器的优先级：!important>#(id)>.(class) | 属性选择器 [id='only'] >div(标签)
+   属性选择器：[id]-->获取id的值
+                  如：[id='only']或[class="only"]
+ 最高的选择器:!important
+ css权重：!important       Infinity（正无穷）
+         行间样式                             1000
+     id                    100
+     class | 属性 |伪类          10
+     标签|伪元素                              1  250进制
+       通配符                                      0
+       
+    font-weight : normal:正常的字体，相当于number为400
+                  bold:粗体。相当于 number为700
+                  bolder:特粗体。也相当于strong和b对象作用
+                  lighyter：细体   
+    font-family:arial; (苹果公司的字体（互联网公司常用字体）)       
+    
+    单行文本垂直居中：height:50px;line-height:50px;
+  文字首行缩进2个字符：text-indent:2em; 1em：表示一个空格； indent:缩进
+ px和em之间的 关系：1em=16px(相对单位);即对应该像素的尺寸
+ <del></del> 用css来写  可以是：text-decoration: line-through;   
+ 1、行内元素:
+ feature:内容决定元素所占位置，不可以通过css  
+ ***行内     
