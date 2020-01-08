@@ -9,22 +9,23 @@
         },
         {
             "path" : "pages/infor/infor",
+            "style" : {
+				"navigationBarTitleText":"详情页面",
+				"navigationBarBackgroundColor":"#007AFF",
+				"enablePullDownRefresh":true
+				
+			}
+        },
+        {
+            "path" : "pages/exercise/exercise",
             "style" : {}
         },
         {
-            "path" : "pages/ exercise/ exercise",
-            "style" : {}
-        },
-        {
-            "path" : "pages/ exercise/phone-code/phone-code",
+            "path" : "pages/exercise/phone-code/phone-code",
             "style" : {}
         },
         {
             "path" : "pages/phone/phone",
-            "style" : {}
-        },
-        {
-            "path" : "pages/index/index",
             "style" : {}
         }
     ],

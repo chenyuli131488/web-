@@ -2,11 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/infor/infor",
-    "pages/ exercise/ exercise",
-    "pages/ exercise/phone-code/phone-code",
-    "pages/phone/phone",
-    "pages/phone/hello2",
-    "pages/index/index"
+    "pages/exercise/exercise",
+    "pages/exercise/phone-code/phone-code",
+    "pages/phone/phone"
   ],
   "subPackages": [],
   "window": {
@@ -15,5 +13,6 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap93.json"
 }

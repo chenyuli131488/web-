@@ -2,6 +2,7 @@
 <template>
 	<view class="content">
 		<!-- 新闻列表 -->
+		<!--列表快捷键 uListMedia-->
 		<view class="uni-list">
 			<!-- 第一种方法 -->
 			<!-- <navigator></navigator> -->
