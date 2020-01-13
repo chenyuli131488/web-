@@ -2,10 +2,8 @@
     "pages" : [
         //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
         {
-            "path" : "pages/index/index",
-            "style" : {
-                "navigationBarTitleText" : "uni-app"
-            }
+            "path" : "pages/index/index"
+         
         },
         {
             "path" : "pages/infor/infor",
@@ -16,10 +14,7 @@
 				
 			}
         },
-        {
-            "path" : "pages/exercise/exercise",
-            "style" : {}
-        },
+       
         {
             "path" : "pages/exercise/phone-code/phone-code",
             "style" : {}
@@ -34,6 +29,7 @@
         "navigationBarTitleText" : "uni-app",
         "navigationBarBackgroundColor" : "#F8F8F8",
         "backgroundColor" : "#F8F8F8"
+		
     }
 }
 // 这是单独开发一个页面时的页面配置
